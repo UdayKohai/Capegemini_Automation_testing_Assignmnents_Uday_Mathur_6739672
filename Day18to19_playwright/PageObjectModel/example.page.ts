@@ -10,6 +10,10 @@ class Example{
 
     };
 
+    async Click(){
+        await this.SubmitBtn.click();
+    }
+
 }
 
 export default Example;
