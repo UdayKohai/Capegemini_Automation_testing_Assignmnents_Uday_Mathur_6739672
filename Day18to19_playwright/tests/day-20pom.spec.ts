@@ -6,6 +6,8 @@ import path from 'path';
 let datafile = fs.readFileSync(path.join(__dirname,'../testdata/data.json')); 
 let data = JSON.parse(datafile);
 
+
+
 test(" ",async({page})=>{
     let examplepage = new example(page);
 
