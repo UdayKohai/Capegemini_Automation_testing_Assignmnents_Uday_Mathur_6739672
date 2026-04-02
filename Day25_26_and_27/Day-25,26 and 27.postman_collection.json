@@ -1,0 +1,152 @@
+{
+  "info": {
+    "_postman_id": "078c6919-c7f3-4d97-bba8-245446588974",
+    "name": "Day-25,26 and 27",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "53447866"
+  },
+  "item": [
+    {
+      "name": "practice",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.globals.set(\"BaseUrl\", \"https://petstore3.swagger.io/api/v3\");\r",
+              "pm.globals.set(\"Id\", \"20\");\r",
+              "pm.globals.set(\"Name\", \"Geodude\");\r",
+              "\r",
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Your test name\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.id).to.eql(20);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"id\":{{Id}},\r\n    \"name\":\"{{Name}}\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{BaseUrl}}/pet",
+          "host": [
+            "{{BaseUrl}}"
+          ],
+          "path": [
+            "pet"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Day25",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://dog.ceo/api/breeds/image/random",
+          "protocol": "https",
+          "host": [
+            "dog",
+            "ceo"
+          ],
+          "path": [
+            "api",
+            "breeds",
+            "image",
+            "random"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "day-26",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "\r",
+              "pm.test(\"Check if the pet id is correct\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.id).to.eql(20);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Body matches string\", function () {\r",
+              "    pm.expect(pm.response.text()).to.include(\"20\");\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response time is less than 200ms\", function () {\r",
+              "    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{BaseUrl}}/pet/{{Id}}",
+          "host": [
+            "{{BaseUrl}}"
+          ],
+          "path": [
+            "pet",
+            "{{Id}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "DAy27",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    }
+  ]
+}
