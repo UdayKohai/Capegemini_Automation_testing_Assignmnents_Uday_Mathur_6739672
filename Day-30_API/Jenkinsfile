@@ -3,6 +3,12 @@ pipeline {
 
     stages {
 
+        stage('Checkout Code') {
+            steps {
+                checkout scm
+            }
+        }
+
         stage('Debug Workspace') {
     steps {
         echo "=== ROOT DIRECTORY ==="
@@ -14,12 +20,6 @@ pipeline {
         }
     }
 }
-
-        stage('Checkout Code') {
-            steps {
-                checkout scm
-            }
-        }
 
         stage('Install Dependencies') {
             steps {
