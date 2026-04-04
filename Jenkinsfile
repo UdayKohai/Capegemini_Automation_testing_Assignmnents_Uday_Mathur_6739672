@@ -5,9 +5,7 @@ pipeline {
 
         stage('Checkout Code') {
             steps {
-                // Force full repo checkout (avoids Jenkins SCM issues)
-                git branch: 'master',
-                    url: 'https://github.com/UdayKohai/Capegemini_Automation_testing_Assignmnents_Uday_Mathur_6739672.git'
+                checkout scm
             }
         }
 
@@ -38,7 +36,7 @@ pipeline {
                     script {
                         def status = bat(script: 'npx playwright test', returnStatus: true)
                         if (status != 0) {
-                            echo "Tests failed, but continuing to generate reports..."
+                            echo "Tests failed, but continuing..."
                         }
                     }
                 }
