@@ -5,21 +5,23 @@ pipeline {
 
         stage('Checkout Code') {
             steps {
-                checkout scm
+                // Force full repo checkout (avoids Jenkins SCM issues)
+                git branch: 'master',
+                    url: 'https://github.com/UdayKohai/Capegemini_Automation_testing_Assignmnents_Uday_Mathur_6739672.git'
             }
         }
 
         stage('Debug Workspace') {
-    steps {
-        echo "=== ROOT DIRECTORY ==="
-        bat 'dir'
+            steps {
+                echo "=== ROOT DIRECTORY ==="
+                bat 'dir'
 
-        echo "=== INSIDE Day-30_API ==="
-        dir('Day-30_API') {
-            bat 'dir'
+                echo "=== INSIDE Day-30_API ==="
+                dir('Day-30_API') {
+                    bat 'dir'
+                }
+            }
         }
-    }
-}
 
         stage('Install Dependencies') {
             steps {
@@ -36,7 +38,7 @@ pipeline {
                     script {
                         def status = bat(script: 'npx playwright test', returnStatus: true)
                         if (status != 0) {
-                            echo "Tests failed, but continuing..."
+                            echo "Tests failed, but continuing to generate reports..."
                         }
                     }
                 }
