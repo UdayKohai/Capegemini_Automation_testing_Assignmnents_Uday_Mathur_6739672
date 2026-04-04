@@ -3,6 +3,18 @@ pipeline {
 
     stages {
 
+        stage('Debug Workspace') {
+    steps {
+        echo "=== ROOT DIRECTORY ==="
+        bat 'dir'
+
+        echo "=== INSIDE Day-30_API ==="
+        dir('Day-30_API') {
+            bat 'dir'
+        }
+    }
+}
+
         stage('Checkout Code') {
             steps {
                 checkout scm
